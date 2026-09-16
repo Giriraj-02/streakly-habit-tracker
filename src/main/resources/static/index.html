@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streakly — 75 Day Habit Tracker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">S</div>
+        <div>
+            <h1>Streakly</h1>
+            <p>Build habits. Protect your streaks.</p>
+        </div>
+    </div>
+
+    <button class="primary-btn" onclick="openModal()">+ Add Habit</button>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <div>
+            <span class="eyebrow">75-DAY CHALLENGE</span>
+            <h2>Small actions. Strong streaks.</h2>
+            <p>Track what matters today and keep your progress alive.</p>
+        </div>
+
+        <div class="day-box">
+            <span>CHALLENGE DAY</span>
+            <strong id="challengeDay">1 / 75</strong>
+        </div>
+    </section>
+
+    <section class="progress-card">
+        <div class="progress-top">
+            <div>
+                <span>Challenge progress</span>
+                <strong id="progressText">1%</strong>
+            </div>
+            <div class="today-count">
+                <strong id="todayCount">0 / 0</strong>
+                <span>completed today</span>
+            </div>
+        </div>
+
+        <div class="progress-track">
+            <div id="progressBar" class="progress-fill"></div>
+        </div>
+    </section>
+
+    <section class="section-head">
+        <div>
+            <span class="eyebrow" id="dateLabel">TODAY</span>
+            <h2 id="sectionTitle">Today's habits</h2>
+        </div>
+
+        <div class="search-wrap">
+            <span>⌕</span>
+            <input id="searchInput" type="text" placeholder="Search habits..." oninput="searchHabits()">
+        </div>
+    </section>
+
+    <nav class="tabs">
+        <button class="tab active" data-tab="today" onclick="switchTab('today')">Today</button>
+        <button class="tab" data-tab="all" onclick="switchTab('all')">All Habits</button>
+        <button class="tab" data-tab="archived" onclick="switchTab('archived')">Archived</button>
+    </nav>
+
+    <section id="habitList" class="habit-list"></section>
+
+</main>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+
+    <div class="modal-card">
+        <button class="close-btn" onclick="closeModal()">×</button>
+
+        <span class="eyebrow">NEW HABIT</span>
+        <h2>Add a habit</h2>
+        <p class="modal-subtitle">Choose how often you want to practice it.</p>
+
+        <label>Habit name</label>
+        <input id="habitName" class="form-input" maxlength="100"
+               placeholder="e.g. Drink 3L water">
+
+        <label>Frequency</label>
+        <div class="frequency-options">
+            <label class="frequency-option">
+                <input type="radio" name="frequency" value="DAILY" checked>
+                <span>
+                    <strong>Every day</strong>
+                    <small>Monday to Sunday</small>
+                </span>
+            </label>
+
+            <label class="frequency-option">
+                <input type="radio" name="frequency" value="WEEKDAYS">
+                <span>
+                    <strong>Weekdays</strong>
+                    <small>Monday to Friday</small>
+                </span>
+            </label>
+        </div>
+
+        <button class="primary-btn full" onclick="addHabit()">Create Habit</button>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
